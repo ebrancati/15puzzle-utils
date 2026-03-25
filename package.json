@@ -1,0 +1,38 @@
+{
+  "name": "15puzzle-utils",
+  "version": "1.0.0",
+  "description": "Sliding puzzle utility library",
+  "keywords": [
+    "15-puzzle",
+    "nxm-puzzles"
+  ],
+  "author": "ebrancati",
+  "license": "MIT",
+  "homepage": "https://github.com/ebrancati/15puzzle-utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebrancati/15puzzle-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ebrancati/15puzzle-utils/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
