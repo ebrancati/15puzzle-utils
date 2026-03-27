@@ -13,10 +13,16 @@ npm install 15puzzle-utils
 ```ts
 import { Puzzle } from '15puzzle-utils';
 
+// Pick one of these constructors:
 const puzzle = new Puzzle();     // 4x4, randomly shuffled
-const puzzle = new Puzzle(3, 5); // custom size
-const puzzle = new Puzzle(grid); // from a 2D array
+const puzzle = new Puzzle(3, 5); // custom size, randomly shuffled
+const puzzle = new Puzzle([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 0]
+]); 
 
+// Methods
 puzzle.isSolved()         // true when puzzle is complete
 puzzle.isSolvable()       // true when puzzle can be solved
 puzzle.canSlide(row, col) // check if tile can slide
