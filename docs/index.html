@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15puzzle-utils</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/prism.css">
+</head>
+<body>
+    <h1>15puzzle-utils</h1>
+    <p>An npm library for creating and manipulating NxM sliding puzzles</p>
+    <pre class="install-command">
+        <code class="language-none">npm install 15puzzle-utils</code>
+    </pre>
+
+    <div class="api-docs">
+        <div class="code-examples-panel">
+            <pre>
+                <code class="language-javascript">
+                    // Import the library
+                    import { Puzzle } from '15puzzle-utils';
+                </code>
+            </pre>
+            <pre data-run-id="try-default">
+                <code class="language-javascript">
+                    // Creates a default 4x4 shuffled puzzle
+                    const puzzle = new Puzzle();
+                </code>
+            </pre>
+            <pre data-run-id="try-size">
+                <code class="language-javascript">
+                    // Creates a custom size shuffled puzzle
+                    const puzzle = new Puzzle(3, 5);
+                </code>
+            </pre>
+            <pre
+                data-run-id="try-array1"
+                data-array="[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,15,14,0]]"
+                data-msg="unsolvable puzzle from array"
+            >
+                <code class="language-javascript">
+                    // Creates puzzle from specific array (this one is unsolvable!)
+                    const puzzle = new Puzzle([
+                        [ 1,  2,  3,  4],
+                        [ 5,  6,  7,  8],
+                        [ 9, 10, 11, 12],
+                        [13, 15, 14,  0]
+                    ]);
+                </code>
+            </pre>
+            <pre
+                data-run-id="try-array2"
+                data-array="[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]"
+                data-msg="solved puzzle from array"
+            >
+                <code class="language-javascript">
+                    // Creates puzzle from specific array (this one is already solved)
+                    const puzzle = new Puzzle([
+                        [ 1,  2,  3,  4],
+                        [ 5,  6,  7,  8],
+                        [ 9, 10, 11, 12],
+                        [13, 14, 15,  0]
+                    ]);
+                </code>
+            </pre>
+            <pre data-run-id="try-solved">
+                <code class="language-javascript">
+                    // Checks if the current puzzle is in solved state
+                    puzzle.isSolved();
+                </code>
+            </pre>
+            <pre data-run-id="try-solvable">
+                <code class="language-javascript">
+                    // Checks if the current puzzle can be solved
+                    puzzle.isSolvable();
+                </code>
+            </pre>
+            <pre data-run-id="try-canslide">
+                <code class="language-javascript">
+                    // Checks if tile(s) at position can slide toward empty space
+                    puzzle.canSlide(row, col);
+                </code>
+            </pre>
+            <pre data-run-id="try-slide">
+                <code class="language-javascript">
+                    // Slides tile(s) at position toward empty space
+                    // Returns movement direction (U=up, D=down, L=left, R=right) and tile count
+                    // Examples: "U" (1 tile up), "L3" (3 tiles left)
+                    puzzle.slide(row, col);
+                </code>
+            </pre>
+            <pre data-run-id="try-grid">
+                <code class="language-javascript">
+                    // Gets puzzle as 2D array (intuitive for small puzzles)
+                    puzzle.getGrid();
+                </code>
+            </pre>
+            <pre data-run-id="try-dimensions">
+                <code class="language-javascript">
+                    // Gets puzzle dimensions
+                    puzzle.getWidth();
+                    puzzle.getHeight();
+                </code>
+            </pre>
+            <pre data-run-id="try-value">
+                <code class="language-javascript">
+                    // Gets value of specific cell
+                    puzzle.getValue(row, col);
+                </code>
+            </pre>
+            <pre data-run-id="try-emptypos">
+                <code class="language-javascript">
+                    // Gets position of empty space as {row, col}
+                    puzzle.getEmptyPosition();
+                </code>
+            </pre>
+            <pre data-run-id="try-ascii">
+                <code class="language-javascript">
+                    // Returns string representation of current puzzle state
+                    puzzle.toAsciiString();
+                </code>
+            </pre>
+        </div>
+
+        <div class="puzzle-panel">
+            <div id="puzzle-grid"></div>
+            <div id="code-output"><code class="language-javascript"></code></div>
+        </div>
+    </div>
+    
+    <div id="coord-modal" hidden>
+        <div class="modal">
+            <code class="modal-call">
+                puzzle.<span id="modal-method"></span>(<input id="modal-row" type="number" min="0">, <input id="modal-col" type="number" min="0">)
+            </code>
+            <div class="modal-actions">
+                <button id="modal-cancel">Cancel</button>
+                <button id="modal-confirm">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://github.com/ebrancati/15puzzle-utils">GitHub</a>
+    </footer>
+
+    <script src="assets/prism.js" data-manual></script>
+    <script type="module" src="assets/script.js"></script>
+</body>
+</html>
