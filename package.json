@@ -8,13 +8,13 @@
   ],
   "author": "ebrancati",
   "license": "MIT",
-  "homepage": "https://github.com/ebrancati/15puzzle-utils",
+  "homepage": "https://ebrancati.github.io/15puzzle-utils/",
   "repository": {
     "type": "git",
     "url": "https://github.com/ebrancati/15puzzle-utils.git"
   },
   "bugs": {
-    "url": "https://github.com/ebrancati/15puzzle-utils/issues"
+    "url": "https://github.com/ebrancati/15puzzle-utils/issues/"
   },
   "type": "module",
   "main": "./dist/index.js",
