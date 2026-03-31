@@ -1,3 +1,4 @@
+/** Base class for all puzzle errors */
 export class PuzzleError extends Error {
     constructor(message: string) {
         super(message);
@@ -6,6 +7,7 @@ export class PuzzleError extends Error {
     }
 }
 
+/** Thrown when grid dimensions are outside the allowed range */
 export class InvalidDimensionError extends PuzzleError {
     constructor(message: string) {
         super(message);
@@ -13,6 +15,7 @@ export class InvalidDimensionError extends PuzzleError {
     }
 }
 
+/** Thrown when the grid contains duplicate or out-of-range tile values */
 export class InvalidGridContentError extends PuzzleError {
     constructor(message: string) {
         super(message);
@@ -20,6 +23,7 @@ export class InvalidGridContentError extends PuzzleError {
     }
 }
 
+/** Thrown when a position is outside the grid boundaries */
 export class InvalidPositionError extends PuzzleError {
     constructor(message: string) {
         super(message);
@@ -27,6 +31,7 @@ export class InvalidPositionError extends PuzzleError {
     }
 }
 
+/** Thrown when attempting to slide the empty space */
 export class EmptyTileSlideError extends PuzzleError {
     constructor(message: string) {
         super(message);
@@ -34,6 +39,7 @@ export class EmptyTileSlideError extends PuzzleError {
     }
 }
 
+/** Thrown when a tile cannot reach the empty space because it is not on the same row or column */
 export class BlockedPathError extends PuzzleError {
     constructor(message: string) {
         super(message);

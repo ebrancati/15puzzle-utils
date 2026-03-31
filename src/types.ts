@@ -1,13 +1,16 @@
+/** Position in the puzzle grid */
 export interface Position {
     row: number;
     col: number;
 }
 
+/** Used to determine puzzle solvability via inversion counting */
 export enum Parity {
     EVEN = 0,
     ODD = 1
 }
 
+/** Possible outcomes when validating a slide move */
 export enum SlideResult {
     MOVE_IS_VALID = 'MOVE_IS_VALID',
     POSITION_OUT_OF_BOUNDS = 'POSITION_OUT_OF_BOUNDS',

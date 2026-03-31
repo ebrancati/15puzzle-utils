@@ -14,8 +14,12 @@ export class Puzzle {
     private height: number;
     private tiles: number[]; // Flattened 1D representation
 
+    /** Creates a shuffled puzzle with the given dimensions */
     constructor(width?: number, height?: number);
+
+    /** Creates a puzzle from an existing grid */
     constructor(grid: number[][]);
+    
     constructor(
         widthOrGrid: number | number[][] = DEFAULT_SIZE,
         height: number = DEFAULT_SIZE
@@ -56,6 +60,7 @@ export class Puzzle {
         }
     }
 
+    /** Returns true when the puzzle is in the solved state */
     isSolved(): boolean {
         let expectedValue = 1;
         const lastIndex = this.width * this.height - 1;
@@ -67,6 +72,7 @@ export class Puzzle {
         return this.tiles[lastIndex] === EMPTY_TILE;
     }
 
+    /** Returns true when the current puzzle configuration is solvable */
     isSolvable(): boolean {
         const inversionParityTracker = this.getInversionParity();
 
@@ -74,10 +80,12 @@ export class Puzzle {
         return this.isOddWidthPuzzleSolvable(inversionParityTracker);
     }
 
+    /** Returns true when the tile at the given position can slide toward the empty space */
     canSlide(row: number, col: number): boolean {
         return this.validateSlideMove({ row, col }) === SlideResult.MOVE_IS_VALID;
     }
 
+    /** Slides the tile at the given position and returns the move direction code */
     slide(row: number, col: number): string {
         const tileToSlide: Position = { row, col };
         this.throwIfSlideMoveIsInvalid(tileToSlide);
@@ -95,6 +103,7 @@ export class Puzzle {
         }
     }
 
+    /** Returns the puzzle grid as a 2D array */
     getGrid(): number[][] {
         const result: number[][] = Array(this.height)
             .fill(null)
@@ -108,20 +117,24 @@ export class Puzzle {
         return result;
     }
 
+    /** Returns the number of columns in the puzzle */
     getWidth(): number {
         return this.width;
     }
 
+    /** Returns the number of rows in the puzzle */
     getHeight(): number {
         return this.height;
     }
 
+    /** Returns the tile value at the given position */
     getValue(row: number, col: number): number {
         const pos: Position = { row, col };
         this.throwIfPositionOutOfBounds(pos);
         return this.at(pos);
     }
 
+    /** Returns the position of the empty space, or null if the grid is invalid */
     getEmptyPosition(): Position | null {
         const emptyIndex = this.findEmptyIndex();
         if (emptyIndex === -1) return null;
@@ -132,6 +145,7 @@ export class Puzzle {
         };
     }
 
+    /** Returns the puzzle state as an ASCII string */
     toAsciiString(): string {
         let ascii = '';
 
