@@ -14,8 +14,11 @@ export class Puzzle {
     private height: number;
     private tiles: number[]; // Flattened 1D representation
 
+    /** Creates a 4x4 shuffled puzzle */
+    constructor();
+
     /** Creates a shuffled puzzle with the given dimensions */
-    constructor(width?: number, height?: number);
+    constructor(width: number, height?: number);
 
     /** Creates a puzzle from an existing grid */
     constructor(grid: number[][]);

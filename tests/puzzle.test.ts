@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Puzzle } from '../src/puzzle';
-import { MIN_SIZE, MAX_SIZE } from '../src/constants';
+import { DEFAULT_SIZE, MIN_SIZE, MAX_SIZE } from '../src/constants';
 import {
     InvalidDimensionError,
     InvalidGridContentError,
@@ -37,19 +37,35 @@ function createUnsolvable4x4Puzzle(): Puzzle {
     ]);
 }
 
-describe('Puzzle(width, height) constructor', () => {
-    it('generates a solvable puzzle', () => {
-        const puzzle = new Puzzle(4, 4);
+describe('Puzzle constructor', () => {
+    it('shuffles a DEFAULT_SIZE x DEFAULT_SIZE puzzle when no args', () => {
+        const puzzle = new Puzzle();
+        expect(puzzle.getWidth()).toBe(DEFAULT_SIZE);
+        expect(puzzle.getHeight()).toBe(DEFAULT_SIZE);
         expect(puzzle.isSolvable()).toBe(true);
+        expect(puzzle.isSolved()).toBe(false);
     });
-});
 
-describe('Puzzle(grid) constructor', () => {
+    it('accepts width and height', () => {
+        const puzzle = new Puzzle(4, 4);
+        expect(puzzle.getWidth()).toBe(4);
+        expect(puzzle.getHeight()).toBe(4);
+        expect(puzzle.isSolvable()).toBe(true);
+        expect(puzzle.isSolved()).toBe(false);
+    });
+
+    it('defaults height to DEFAULT_SIZE when only width is provided', () => {
+        const puzzle = new Puzzle(3);
+        expect(puzzle.getWidth()).toBe(3);
+        expect(puzzle.getHeight()).toBe(DEFAULT_SIZE);
+        expect(puzzle.isSolvable()).toBe(true);
+        expect(puzzle.isSolved()).toBe(false);
+    });
+
     it('creates a puzzle from a 4x4 grid', () => {
         const puzzle = createSolved4x4Puzzle();
-        const grid = puzzle.getGrid();
-        expect(grid.length).toBe(4);
-        expect(grid[0].length).toBe(4);
+        expect(puzzle.getWidth()).toBe(4);
+        expect(puzzle.getHeight()).toBe(4);
     });
 });
 
