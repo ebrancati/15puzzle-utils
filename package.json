@@ -1,6 +1,6 @@
 {
   "name": "15puzzle-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sliding puzzle utility library",
   "keywords": [
     "15-puzzle",
