@@ -14,8 +14,8 @@ npm install 15puzzle-utils
 import { Puzzle } from '15puzzle-utils';
 
 // Pick one of these constructors:
-const puzzle = new Puzzle();     // 4x4, randomly shuffled
-const puzzle = new Puzzle(3, 5); // custom size, randomly shuffled
+const puzzle = new Puzzle();     // 4x4, randomly shuffled, solvable
+const puzzle = new Puzzle(3, 5); // custom size, randomly shuffled, solvable
 const puzzle = new Puzzle([
     [1, 2, 3],
     [4, 5, 6],
