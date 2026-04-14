@@ -2,6 +2,11 @@
 
 Utility library for creating and manipulating sliding puzzles
 
+[![npm version](https://img.shields.io/npm/v/15puzzle-utils?logo=npm)](https://www.npmjs.com/package/15puzzle-utils)
+[![npm total downloads](https://img.shields.io/npm/dt/15puzzle-utils?logo=npm)](https://www.npmjs.com/package/15puzzle-utils)
+[![api docs](https://img.shields.io/badge/api%20docs-online-brightgreen)](https://ebrancati.github.io/15puzzle-utils/)
+[![license](https://img.shields.io/npm/l/15puzzle-utils)](LICENSE)
+
 ## Installation
 
 ```bash
